@@ -2,12 +2,11 @@
 
 namespace frontend\controllers;
 
-use Yii;
-use yii\base\InvalidArgumentException;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
+use linslin\yii2\curl\Curl;
 use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\helpers\Json;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -65,10 +64,31 @@ class SiteController extends Controller
      * Displays homepage.
      *
      * @return mixed
+     * @throws \Exception
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        $curl = new Curl();
+
+// Настройка и выполнение POST запроса
+        $response = $curl->setOption(
+            CURLOPT_POSTFIELDS,
+            Json::encode([
+                'conversation_id' => '123',
+                'bot_id' => \Yii::$app->params['botId'],
+                'user' => '29032201862555',
+                'query' => 'сгенерируй 50 текстов для speed typing test минимум 30 слов которые легко будет парсить из этого чата на русском',
+                'stream' => false
+            ])
+        )->setHeaders([
+            'Authorization' => 'Bearer ' . \Yii::$app->params['authToken'],
+            'Content-Type' => 'application/json',
+            'Accept' => '*/*',
+            'Host' => 'api.coze.com',
+            'Connection' => 'keep-alive',
+        ])->post('https://api.coze.com/open_api/v2/chat');
+
+        return $this->render('index', ['response' => $response]);
     }
 
     /**

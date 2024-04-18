@@ -1,24 +1,75 @@
-# Quasar App (app)
+# Nuxt UI Minimal Starter
 
-Speed typing test app
+Look at [Nuxt docs](https://nuxt.com/docs/getting-started/introduction) and [Nuxt UI docs](https://ui.nuxt.com) to learn more.
 
-## Install the dependencies
+## Setup
+
+Make sure to install the dependencies:
+
 ```bash
-yarn
-# or
+# npm
 npm install
+
+# pnpm
+pnpm install
+
+# yarn
+yarn install
+
+# bun
+bun install
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+## Development Server
+
+Start the development server on `http://localhost:3000`:
+
 ```bash
-quasar dev
+# npm
+npm run dev
+
+# pnpm
+pnpm run dev
+
+# yarn
+yarn dev
+
+# bun
+bun run dev
 ```
 
+## Production
 
-### Build the app for production
+Build the application for production:
+
 ```bash
-quasar build
+# npm
+npm run build
+
+# pnpm
+pnpm run build
+
+# yarn
+yarn build
+
+# bun
+bun run build
 ```
 
-### Customize the configuration
-See [Configuring quasar.config.js](https://v2.quasar.dev/quasar-cli-vite/quasar-config-js).
+Locally preview production build:
+
+```bash
+# npm
+npm run preview
+
+# pnpm
+pnpm run preview
+
+# yarn
+yarn preview
+
+# bun
+bun run preview
+```
+
+Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
